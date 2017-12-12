@@ -11,7 +11,10 @@
 
     <ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
         <ng-template let-item="item">
-            <Label [text]="item.name" class="medium-spacing"></Label>
+            <GridLayout columns="*, auto">
+                <Label col="0" [text]="item.name" class="medium-spacing"></Label>
+                <Image col="1" src="res://delete" (tap)="delete(item)" class="delete-icon"></Image>
+            </GridLayout>
         </ng-template>
     </ListView>
 

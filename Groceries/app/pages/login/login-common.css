@@ -12,9 +12,15 @@ Button, TextField {
     margin-left: 16;
     margin-right: 16;
     margin-bottom: 10;
+    /* placeholder-color: white; */
 }
 .submit-button {
     background-color: #CB1D00;
     color: white;
     margin-top: 20;
+}
+Page {
+    background-image: "res://logo_login";
+    background-repeat: no-repeat;
+    background-position: center;
 }

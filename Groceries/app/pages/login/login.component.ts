@@ -5,6 +5,9 @@ import { Color } from "color";
 import { View } from "ui/core/view";
 import { Animation, AnimationDefinition } from "ui/animation";
 
+import { setHintColor } from "../../utils/hint-util";
+import { TextField } from "ui/text-field";
+
 import { User } from "../../shared/user/user";
 import { UserService } from "../../shared/user/user.service";
 
@@ -21,6 +24,8 @@ export class LoginComponent implements OnInit {
 
   @ViewChild("container") container: ElementRef;
   @ViewChild("icon") icon: ElementRef;
+  @ViewChild("email") email: ElementRef;
+  @ViewChild("password") password: ElementRef;
 
   constructor(private router: Router, private userService: UserService, private page: Page) {
     this.user = new User();
@@ -29,6 +34,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.page.actionBarHidden = true;
     this.page.backgroundImage = "res://bg_login";
+    this.page.addCss("Page { background-repeat: no-repeat; background-size: 100% 100%; }");
+  }
+
+  setTextFieldColors() {
+    let emailTextField = <TextField>this.email.nativeElement;
+    let passwordTextField = <TextField>this.password.nativeElement;
+
+    let mainTextColor = new Color(this.isLoggingIn ? "black" : "#C4AFB4");
+    emailTextField.color = mainTextColor;
+    passwordTextField.color = mainTextColor;
+
+    let hintColor = new Color(this.isLoggingIn ? "#AcA6A7" : "#C4AFB4");
+    setHintColor({ view: emailTextField, color: hintColor });
+    setHintColor({ view: passwordTextField, color: hintColor });
   }
 
   submit() {
@@ -64,6 +83,7 @@ export class LoginComponent implements OnInit {
 
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
+    this.setTextFieldColors();
     // animate the background of the container
     let container = <View>this.container.nativeElement;
     container.animate({

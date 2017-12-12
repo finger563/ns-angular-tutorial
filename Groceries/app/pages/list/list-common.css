@@ -20,6 +20,11 @@ ListView {
   margin-left: 10;
   margin-right: 5;
 }
+.delete-icon {
+  background-color: gray;
+  width: 30;
+  height: 30;
+}
 TextField {
   color: white;
 }
