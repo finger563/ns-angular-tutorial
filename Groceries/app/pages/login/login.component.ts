@@ -9,10 +9,7 @@ import { UserService } from "../../shared/user/user.service";
   moduleId: module.id,
   providers: [UserService],
   templateUrl: "./login.html",
-  styleUrls: [
-    "./login-common.css",
-    "./login.css"
-  ]
+  styleUrls: ["./login-common.css", "./login.css"],
 })
 export class LoginComponent {
   user: User;
