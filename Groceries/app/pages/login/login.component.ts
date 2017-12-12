@@ -6,11 +6,12 @@ import { UserService } from "../../shared/user/user.service";
 
 @Component({
   selector: "my-app",
+  moduleId: module.id,
   providers: [UserService],
-  templateUrl: "./pages/login/login.html",
+  templateUrl: "./login.html",
   styleUrls: [
-    "pages/login/login-common.css",
-    "pages/login/login.css"
+    "./login-common.css",
+    "./login.css"
   ]
 })
 export class LoginComponent {
@@ -33,7 +34,7 @@ export class LoginComponent {
     this.userService.login(this.user)
     .subscribe(
         () => this.router.navigate(["/list"]),
-        (error) => alert("Unforunately we could not find your account.")
+        (error) => alert("Unfortunately we could not find your account.")
     );
   }
 

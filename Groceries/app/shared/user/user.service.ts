@@ -29,7 +29,7 @@ export class UserService {
 
     login(user: User) {
         let headers = new Headers();
-        headers.append("Conent-Type", "application-json");
+        headers.append("Content-Type", "application/json");
 
         return this.http.post(
             Config.apiUrl + "oauth/token",
